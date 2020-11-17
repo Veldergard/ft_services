@@ -1,6 +1,8 @@
+services=("nginx" "mysql")
+
 minikube stop
 minikube delete
-minikube start
+minikube start --vm-driver=virtualbox --disk-size 8GB
 eval $(minikube docker-env)
 
 minikube dashboard &
@@ -8,5 +10,12 @@ minikube dashboard &
 minikube addons enable metallb
 kubectl apply -f srcs/k8s/metallb-config.yaml
 
-docker build srcs/nginx -t "nginx:k8s"
-kubectl apply -f srcs/k8s/nginx.yaml
+for service in "${services[@]}"
+do
+    printf "docker build ${service}: "
+    docker build srcs/${service} -t "${service}:k8s"
+    printf "status - OK\n"
+    kubectl apply -f srcs/k8s/${service}.yaml
+done
+docker build srcs/mysql -t "mysql:k8s"
+kubectl apply -f srcs/k8s/mysql.yaml

@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk update; apk upgrade; apk add vim mysql mysql-client openrc
+RUN apk update; apk upgrade; apk add mysql mysql-client openrc
 
 COPY /my.cnf ./etc/mysql/
 COPY /start.sh /wordpress.sql ./
