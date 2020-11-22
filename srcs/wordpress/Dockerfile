@@ -9,7 +9,7 @@ rm -rf latest.tar.gz; \
 mkdir /www; \
 mv wordpress/* /www; \
 rm -rf /var/cache/apk/* /etc/nginx/conf.d/default.conf; \
-chmod 777 /var/www/*; \
+chmod 777 /www/*; \
 mkdir -p /run/nginx
 
 COPY wp-config.php /www/wp-config.php
