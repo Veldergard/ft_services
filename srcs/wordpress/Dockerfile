@@ -1,10 +1,21 @@
 FROM alpine:latest
 
 RUN apk update; apk upgrade; apk add wget \
-php7 php7-fpm php7-json php7-mysqli \
-mkdir /www ; \
+php7 php7-fpm php7-json php7-mysqli nginx;
 
-RUN wget https://wordpress.org/latest.tar.gz ; \
+RUN wget https://wordpress.org/latest.tar.gz; \
 tar -xzvf latest.tar.gz; \
-mv wordpress/* /www ; \
-rm -rf /var/cache/apk/*
+rm -rf latest.tar.gz; \
+mkdir /www; \
+mv wordpress/* /www; \
+rm -rf /var/cache/apk/* /etc/nginx/conf.d/default.conf; \
+chmod 777 /var/www/*; \
+mkdir -p /run/nginx
+
+COPY wp-config.php /www/wp-config.php
+COPY nginx.conf /etc/nginx/conf.d/
+
+EXPOSE 5050
+ADD start.sh /
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
