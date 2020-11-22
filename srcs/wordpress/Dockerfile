@@ -16,4 +16,4 @@ COPY wp-config.php /www/wp-config.php
 COPY nginx.conf /etc/nginx/conf.d/
 
 EXPOSE 5050
-CMD nginx -g 'daemon off;'; /usr/sbin/php-fpm7
+CMD nginx; /usr/sbin/php-fpm7
