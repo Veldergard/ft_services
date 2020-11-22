@@ -16,6 +16,4 @@ COPY wp-config.php /www/wp-config.php
 COPY nginx.conf /etc/nginx/conf.d/
 
 EXPOSE 5050
-ADD start.sh /
-RUN chmod +x /start.sh
-CMD ["/start.sh"]
+CMD nginx -g 'daemon off;'; php -S 0.0.0.0:5050 -t /www/
