@@ -513,11 +513,11 @@ CREATE TABLE `wp_users` (
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(2, 'admin', '$P$BDntdOdqeS.nHG2w.H5EeIFb6fu.Ss/', 'admin', 'olaurine@student.21-school.ru', '', '2020-11-02 14:28:14', '1604327295:$P$B1nzImYdScjFilxSjH8T9ZfEQhXFhP1', 0, 'admin admin'),
-(3, 'user', '$P$BQekaH6oDPb1x84VpYdnUQZTkIOYsC1', 'user', 'user@gmail.com', '', '2020-11-02 14:29:20', '1604327361:$P$Bg942VbB/KErmRECDFR.a/5WzJw2wq1', 0, 'user userovich'),
-(4, 'vladimir', '$P$BHrCEA6bB3iaAJcIygw0hTali/T4EQ.', 'vladimir', 'vladimir@gmail.com', '', '2020-11-02 14:30:14', '1604327414:$P$B/7P.UU8zfcIS10zTmlqFiXLZvgQud0', 0, 'vladimir'),
-(5, 'viktor', '$P$BE1AsRc8lvdTzaIIotUWjQNS4c6SAj.', 'viktor', 'viktor@gmail.com', '', '2020-11-02 14:30:31', '1604327432:$P$BAhYw7ZeccAfRTJ.8xwbflJENSP70W/', 0, 'viktor'),
-(6, 'artur', '$P$BmeP6vfx2Y9B0l/VAaJ7oiR.0V1dp6.', 'artur', 'artur@artur.artur', '', '2020-11-02 14:48:36', '', 0, 'artur');
+(2, 'admin', MD5("admin"), 'admin', 'olaurine@student.21-school.ru', '', '2020-11-02 14:28:14', '1604327295:$P$B1nzImYdScjFilxSjH8T9ZfEQhXFhP1', 0, 'admin admin'),
+(3, 'user', MD5("user"), 'user', 'user@gmail.com', '', '2020-11-02 14:29:20', '1604327361:$P$Bg942VbB/KErmRECDFR.a/5WzJw2wq1', 0, 'user userovich'),
+(4, 'vladimir', MD5("vladimir"), 'vladimir', 'vladimir@gmail.com', '', '2020-11-02 14:30:14', '1604327414:$P$B/7P.UU8zfcIS10zTmlqFiXLZvgQud0', 0, 'vladimir'),
+(5, 'viktor', MD5("viktor"), 'viktor', 'viktor@gmail.com', '', '2020-11-02 14:30:31', '1604327432:$P$BAhYw7ZeccAfRTJ.8xwbflJENSP70W/', 0, 'viktor'),
+(6, 'artur', MD5("artur"), 'artur', 'artur@artur.artur', '', '2020-11-02 14:48:36', '', 0, 'artur');
 
 --
 -- Indexes for dumped tables
