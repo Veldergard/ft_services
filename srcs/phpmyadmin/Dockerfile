@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk update; apk upgrade; apk add nginx wget \
+RUN apk update; apk --no-cache upgrade; apk add --no-cache nginx wget \
 php7 php7-fpm php7-iconv php7-json php7-mbstring php7-mysqli php7-phar php7-session
 
 RUN wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz; \

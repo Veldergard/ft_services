@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk update; apk upgrade; apk add wget \
+RUN apk update; apk --no-cache upgrade; apk add --no-cache wget \
 php7 php7-fpm php7-json php7-mysqli nginx;
 
 RUN wget https://wordpress.org/latest.tar.gz; \

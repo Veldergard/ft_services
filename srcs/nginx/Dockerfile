@@ -2,7 +2,7 @@ FROM alpine:latest
 
 COPY ./srcs/nginx.conf ./srcs/index.html ./
 
-RUN apk update; apk upgrade; apk add nginx openssl openssh
+RUN apk update; apk --no-cache upgrade; apk add --no-cache nginx openssl openssh
 
 RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 30 -nodes \
 	-keyout /etc/ssl/private/olaurine.key -out /etc/ssl/private/olaurine.crt \
