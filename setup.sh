@@ -1,4 +1,4 @@
-services=("nginx" "mysql")
+services=("nginx" "wp", "ftps", "phpmyadmin", "mysql", "influxdb", "grafana")
 
 minikube stop
 minikube delete
