@@ -11,8 +11,7 @@ tar xvfz influxdb-2.0.2_linux_amd64.tar.gz; \
 rm -rf influxdb-2.0.2_linux_amd64.tar.gz; \
 mv /influxdb-2.0.2_linux_amd64 /influxdb
 
-RUN ./influxdb/influxd > var/log/inf_start.log &; sleep 20; \
-/influxdb/influx setup -u "root" -p "root1234" -o "school21" -b "school21" -r 0 -f
+RUN ./influxdb/influxd > var/log/inf_start.log & sleep 20; /influxdb/influx setup -u "root" -p "root1234" -o "school21" -b "school21" -r 0 -f
 
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.16.2_linux_amd64.tar.gz; \
 tar xf telegraf-1.16.2_linux_amd64.tar.gz; \

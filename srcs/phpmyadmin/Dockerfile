@@ -9,7 +9,7 @@ tar zxvf phpMyAdmin-latest-english.tar.gz --strip-components 1 -C /var/www/phpmy
 rm -rf phpMyAdmin-latest-english.tar.gz /etc/nginx/conf.d/default.conf; \
 mkdir -p /run/nginx /var/run/php
 
-COPY wp-config.php /var/www/phpmyadmin/wp-config.php
+COPY config.inc.php /var/www/phpmyadmin/config.inc.php
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 EXPOSE 5000
