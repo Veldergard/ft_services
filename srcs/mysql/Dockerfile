@@ -1,9 +1,11 @@
 FROM alpine:latest
 
-RUN apk update; apk --no-cache upgrade; apk add --no-cache mysql mysql-client openrc
+RUN apk update; apk --no-cache upgrade; \
+apk add --no-cache mysql mysql-client
 
-COPY /my.cnf ./etc/mysql/
-COPY /start.sh /wordpress.sql ./
+COPY /start.sh /wordpress.sql /init_db.sh ./
+
+RUN chmod +x start.sh init_db.sh
 
 VOLUME	/var/lib/mysql
 
