@@ -12,9 +12,7 @@ kubectl apply -f srcs/k8s/metallb-config.yaml
 
 for service in "${services[@]}"
 do
-    printf "docker build ${service}: "
     docker build srcs/${service} -t "${service}:k8s"
-    printf "status - OK\n"
 done
 
 for service in "${services[@]}"
