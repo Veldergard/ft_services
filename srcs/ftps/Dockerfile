@@ -11,9 +11,12 @@ RUN echo 'root:toor' | chpasswd; \
 touch /var/log/xferlog;
 
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY start.sh ./
+
+RUN chmod +x start.sh
 
 VOLUME ["sys/fs/cgroup"]
 
 EXPOSE 21 21000
 
-ENTRYPOINT ["start.sh"]
+CMD ./start.sh
