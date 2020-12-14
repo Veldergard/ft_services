@@ -20,5 +20,5 @@ do
 kubectl apply -f srcs/k8s/${service}.yaml
 done
 
-# docker build srcs/ftps -t "ftps:k8s"
+# docker build srcs/mysql -t "mysql:k8s"
 # kubectl delete -f srcs/k8s/ftps.yaml
