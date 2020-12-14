@@ -1,0 +1,10 @@
+CREATE DATABASE wordpress;
+DELETE FROM mysql.user WHERE User='';
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+SET PASSWORD FOR 'mysql'@'localhost' = PASSWORD('mysql');
+GRANT ALL ON *.* TO 'mysql'@'localhost' IDENTIFIED BY 'mysql' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'mysql'@'127.0.0.1' IDENTIFIED BY 'mysql' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'mysql'@'%' IDENTIFIED BY 'mysql' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
