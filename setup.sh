@@ -1,4 +1,4 @@
-services=("nginx" "wordpress" "ftps" "phpmyadmin" "mysql" "influx" "grafana")
+services=("wordpress" "phpmyadmin" "mysql") # "nginx" "ftps" "influx" "grafana"
 
 minikube stop
 minikube delete
@@ -13,7 +13,10 @@ do
     docker build srcs/${service} -t "${service}:k8s"
 done
 
+minikube dashboard &
+kubectl apply -f srcs/k8s/volumes.yaml
+
 for service in "${services[@]}"
 do
-kubectl apply -f srcs/k8s/${service}.yaml
+    kubectl apply -f srcs/k8s/${service}.yaml
 done
