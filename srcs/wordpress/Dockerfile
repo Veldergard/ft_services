@@ -6,13 +6,13 @@ RUN apk update; apk --no-cache upgrade; \
     apk add --no-cache curl nginx php7 php7-fpm php7-json \
     php7-mysqli php7-phar php7-mbstring mysql-client
 
-COPY nginx.conf /etc/nginx/
+COPY nginx.conf /etc/nginx/conf.d/
 COPY start.sh   /usr/bin/
 
 RUN mkdir /run/nginx; \
     rm -rf /etc/nginx/conf.d/default.conf; \
-    chmod 755 /usr/bin/start.sh; \
-    chmod -R 755 /var/www /var/lib/nginx /var/www/*
+    chmod 755 /usr/bin/start.sh
 
 EXPOSE 5050
+WORKDIR /var/www
 CMD start.sh
