@@ -32,10 +32,6 @@ $cfg['Servers'][$i]['host'] = 'mysql-svc:3306';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
-/**
- * phpMyAdmin configuration storage settings.
- */
-
 /* User used to manipulate with storage */
 // $cfg['Servers'][$i]['controlhost'] = '';
 // $cfg['Servers'][$i]['controlport'] = '';
