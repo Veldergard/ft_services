@@ -23,7 +23,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin
+  name: phpmyadmin-svc
+  annotations:
+    metallb.universe.tf/allow-shared-ip: POGGERS
 spec:
   type: LoadBalancer
   selector:

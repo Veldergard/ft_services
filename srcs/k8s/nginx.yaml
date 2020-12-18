@@ -24,7 +24,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx-svc
+  annotations:
+    metallb.universe.tf/allow-shared-ip: POGGERS
 spec:
   type: LoadBalancer
   selector:
