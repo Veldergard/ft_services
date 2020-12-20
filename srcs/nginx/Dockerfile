@@ -14,6 +14,11 @@ RUN rm /etc/nginx/conf.d/default.conf; \
 	mv /index.html /var/www/; \
 	mkdir /run/nginx
 
+RUN adduser -D user; \
+	echo "user:pass" | chpasswd; \
+	ssh-keygen -A
+
+
 EXPOSE 22 80 443
 
-CMD nginx -g 'daemon off;'
+CMD /usr/sbin/sshd; nginx -g 'daemon off;'
