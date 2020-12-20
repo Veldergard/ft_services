@@ -12,16 +12,15 @@ RUN wget -nv https://dl.influxdata.com/influxdb/releases/influxdb-2.0.2_linux_am
     rm -rf influxdb-2.0.2_linux_amd64.tar.gz; \
     mv /influxdb-2.0.2_linux_amd64 /influxdb
 
-RUN ./influxdb/influxd > var/log/inf_start.log & sleep 20; /influxdb/influx setup -u "root" -p "root1234" -o "school21" -b "school21" -r 0 -f
-
 RUN wget -nv https://dl.influxdata.com/telegraf/releases/telegraf-1.16.2_linux_amd64.tar.gz; \
     tar xf telegraf-1.16.2_linux_amd64.tar.gz; \
     cp -r /telegraf-1.16.2/* /; \
     rm -rf telegraf-1.16.2_linux_amd64.tar.gz /telegraf-1.16.2; \
     telegraf --input-filter docker --output-filter influxdb config > /etc/telegraf/telegraf.conf
 
+COPY /start.sh /
+RUN chmod 755 start.sh
+
 EXPOSE 8086
-
 VOLUME	/var/lib/influxdb
-
-ENTRYPOINT /usr/bin/telegraf --config /etc/telegraf/telegraf.conf
+ENTRYPOINT ./start.sh
