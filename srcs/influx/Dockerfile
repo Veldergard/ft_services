@@ -7,10 +7,10 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
     wget -nv https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk; \
     apk add glibc-2.32-r0.apk
 
-RUN wget -nv https://dl.influxdata.com/influxdb/releases/influxdb-2.0.3_linux_amd64.tar.gz; \
-    tar xfz influxdb-2.0.3_linux_amd64.tar.gz; \
-    rm -rf influxdb-2.0.3_linux_amd64.tar.gz; \
-    mv /influxdb-2.0.3_linux_amd64 /influxdb
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb2-2.0.3_linux_amd64.tar.gz; \
+    tar xfz influxdb2-2.0.3_linux_amd64.tar.gz; \
+    rm -rf influxdb2-2.0.3_linux_amd64.tar.gz; \
+    mv /influxdb2-2.0.3_linux_amd64 /influxdb
 
 RUN wget -nv https://dl.influxdata.com/telegraf/releases/telegraf-1.17.0_linux_amd64.tar.gz; \
     tar xf telegraf-1.17.0_linux_amd64.tar.gz; \
