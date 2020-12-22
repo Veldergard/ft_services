@@ -15,10 +15,10 @@ RUN wget https://dl.influxdata.com/influxdb/releases/influxdb2-2.0.3_linux_amd64
 RUN wget -nv https://dl.influxdata.com/telegraf/releases/telegraf-1.17.0_linux_amd64.tar.gz; \
     tar xf telegraf-1.17.0_linux_amd64.tar.gz; \
     cp -r /telegraf-1.17.0/* /; \
-    rm -rf telegraf-1.17.0_linux_amd64.tar.gz /telegraf-1.17.0; \
-    telegraf --input-filter docker --output-filter influxdb config > /etc/telegraf/telegraf.conf
+    rm -rf telegraf-1.17.0_linux_amd64.tar.gz /telegraf-1.17.0
 
-COPY /start.sh /
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+COPY start.sh /
 RUN chmod 755 start.sh
 
 EXPOSE 8086
