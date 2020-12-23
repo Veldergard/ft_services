@@ -13,10 +13,6 @@ RUN wget -nv https://dl.grafana.com/oss/release/grafana-7.3.4.linux-amd64.tar.gz
     mv /grafana/bin/grafana-server /usr/bin/grafana-server; \
     mv /grafana/bin/grafana-cli /usr/bin/grafana-cli
 
-RUN mkdir -p /grafana/provisioning/datasources
-COPY datasource.yaml /grafana/provisioning/datasources
-
-COPY grafana.ini /grafana/conf/
 COPY start.sh /grafana/
 RUN chmod 755 /grafana/start.sh
 
