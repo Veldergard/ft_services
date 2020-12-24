@@ -14,6 +14,7 @@ RUN wget -nv https://dl.grafana.com/oss/release/grafana-7.3.4.linux-amd64.tar.gz
     mv /grafana/bin/grafana-cli /usr/bin/grafana-cli
 
 COPY start.sh /grafana/
+COPY grafana.db /grafana/data/grafana.db
 RUN chmod 755 /grafana/start.sh
 
 EXPOSE	3000
