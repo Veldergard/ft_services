@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 RUN apk update; apk --no-cache upgrade; apk add openssl vsftpd --no-cache;
 
@@ -8,7 +8,8 @@ RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 30 -nodes \
     -subj "/C=RU/ST=Kazan/L=Kazan/O=21 School/OU=olaurine/CN=olaurine";
 
 RUN echo 'root:toor' | chpasswd; \
-    touch /var/log/xferlog;
+    touch /var/log/xferlog; \
+    mkdir -p /var/ftp
 
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY start.sh /

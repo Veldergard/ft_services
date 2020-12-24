@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 RUN apk update; apk --no-cache upgrade; \
     apk add --no-cache wget bash

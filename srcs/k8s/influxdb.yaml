@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: influx
+  name: influxdb
 spec:
   selector:
     matchLabels:
-      app: influx
+      app: influxdb
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: influx
+        app: influxdb
     spec:
       volumes:
-      - name: influx-storage
+      - name: influxdb-storage
         persistentVolumeClaim:
-          claimName: influx-claim
+          claimName: influxdb-claim
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
       containers:
-      - name: influx
-        image: influx:k8s
+      - name: influxdb
+        image: influxdb:k8s
         imagePullPolicy: Never
         ports:
         - containerPort: 8086
         volumeMounts:
-        - name: influx-storage
+        - name: influxdb-storage
           mountPath: /var/lib/influxdb
         - name: dockersock
           mountPath: var/run/docker.sock
@@ -35,13 +35,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: influx-svc
+  name: influxdb
   annotations:
     metallb.universe.tf/allow-shared-ip: POGGERS
 spec:
   type: ClusterIP
   selector:
-    app: influx
+    app: influxdb
   ports:
   - protocol: TCP
     port: 8086

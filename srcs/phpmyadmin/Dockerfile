@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 RUN apk update; apk --no-cache upgrade; apk add --no-cache nginx wget openssl \
     php7 php7-fpm php7-iconv php7-json php7-mbstring php7-mysqli php7-phar php7-session

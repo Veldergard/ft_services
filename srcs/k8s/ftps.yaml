@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftps-svc
+  name: ftps
   annotations:
     metallb.universe.tf/allow-shared-ip: POGGERS
 spec:

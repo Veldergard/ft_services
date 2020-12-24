@@ -1,8 +1,12 @@
-services=("wordpress" "phpmyadmin" "mysql" "nginx" "ftps" "influx" "grafana")
+services=("wordpress" "phpmyadmin" "mysql" "nginx" "ftps" "influxdb" "grafana")
 
 minikube stop
 minikube delete
-minikube start --vm-driver=virtualbox --disk-size 8GB
+minikube start --vm-driver=virtualbox --disk-size 8GB --memory 2400
+if [ $? -ne 0 ]
+then
+    exit;
+fi
 eval $(minikube docker-env)
 
 minikube addons enable metallb

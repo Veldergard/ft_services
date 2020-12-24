@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin-svc
+  name: phpmyadmin
   annotations:
     metallb.universe.tf/allow-shared-ip: POGGERS
 spec:
