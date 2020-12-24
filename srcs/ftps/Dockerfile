@@ -11,7 +11,7 @@ RUN echo 'root:toor' | chpasswd; \
     touch /var/log/xferlog;
 
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
-COPY start.sh ./
+COPY start.sh /
 
 RUN chmod +x start.sh
 
