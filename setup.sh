@@ -2,7 +2,7 @@ services=("wordpress" "phpmyadmin" "mysql" "nginx" "ftps" "influxdb" "grafana")
 
 minikube stop
 minikube delete
-minikube start --vm-driver=virtualbox --disk-size 8GB --memory 2400
+minikube start --vm-driver=virtualbox --disk-size 12GB --memory 2400
 if [ $? -ne 0 ]
 then
     exit;

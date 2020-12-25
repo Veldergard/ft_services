@@ -38,7 +38,7 @@ spec:
     protocol: TCP
     targetPort: 21
   - port: 10100
-    name: port-passv
+    name: port-pasv
     protocol: TCP
     targetPort: 10100
 ...
