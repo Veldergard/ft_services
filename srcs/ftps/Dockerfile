@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk update; apk --no-cache upgrade; apk add openssl vsftpd --no-cache;
+RUN apk update; apk --no-cache upgrade; apk add bash openssl vsftpd supervisor --no-cache;
 
 RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 30 -nodes \
     -out /etc/vsftpd/vsftpd.crt \
@@ -11,13 +11,7 @@ RUN echo 'root:toor' | chpasswd; \
     touch /var/log/xferlog; \
     mkdir -p /var/ftp
 
+COPY supervisord.conf /etc/supervisord.conf
 COPY vsftpd.conf /etc/vsftpd/vsftpd.conf
-COPY start.sh /
-
-RUN chmod +x start.sh
-
-VOLUME ["sys/fs/cgroup"]
-
-EXPOSE 21 21000
-
-CMD ./start.sh
+EXPOSE 21 10100
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]

@@ -1,7 +1,7 @@
 FROM alpine
 
 RUN apk update; apk --no-cache upgrade; \
-    apk add --no-cache wget bash
+    apk add --no-cache wget bash supervisor
 
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub; \
     wget -nv https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk; \
@@ -17,9 +17,8 @@ RUN tar xf telegraf.tar.gz; \
     cp -r /telegraf-1.17.0/* /; \
     rm -rf telegraf.tar.gz /telegraf-1.17.0
 
+COPY supervisord.conf /etc/supervisord.conf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
-COPY start.sh /
-
 EXPOSE 8086
 VOLUME	/var/lib/influxdb
-ENTRYPOINT ./start.sh
+ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]

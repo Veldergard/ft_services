@@ -1,7 +1,4 @@
 cd /var/www
-
-php-fpm7
-
 mysql wordpress -hmysql -umysql -pmysql -e';';
 until [ $? -eq 0 ]
 do
@@ -16,4 +13,4 @@ if ! wp core is-installed ; then
     wp user create Vladimir vladimir@gmail.com --role=contributor --user_pass=vladimir
     wp user create Viktor viktor@gmail.com --role=subscriber --user_pass=viktor
 fi
-nginx -g 'daemon off;'
+supervisord --nodaemon --configuration /etc/supervisord.conf
