@@ -2,11 +2,11 @@ cd /var/www
 
 php-fpm7
 
-mysql wordpress -hmysql-svc -umysql -pmysql -e';';
+mysql wordpress -hmysql -umysql -pmysql -e';';
 until [ $? -eq 0 ]
 do
     sleep 3;
-    mysql wordpress -hmysql-svc -umysql -pmysql -e';';
+    mysql wordpress -hmysql -umysql -pmysql -e';';
 done;
 
 if ! wp core is-installed ; then

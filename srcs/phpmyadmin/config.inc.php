@@ -7,7 +7,7 @@ if ($_SERVER['HTTP_X_FORWARDED_HOST'])
 $i = 0;
 $i++;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
-$cfg['Servers'][$i]['host'] = 'mysql-svc:3306';
+$cfg['Servers'][$i]['host'] = 'mysql:3306';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 $cfg['UploadDir'] = '';
